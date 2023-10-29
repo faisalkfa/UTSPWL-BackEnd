@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package mygrpc;
+
+service ProductService {
+    rpc CalculateTotalPrice (CalculateTotalRequest) returns (CalculateTotalResponse);
+    rpc GetProductDetails (ProductDetailsRequest) returns (ProductDetailsResponse);
+}
+
+message CalculateTotalRequest {
+    repeated string product_ids = 1;
+}
+
+message CalculateTotalResponse {
+    double total_price = 1;
+}
+
+message ProductDetailsRequest {
+    string product_id = 1;
+}
+
+message ProductDetailsResponse {
+    string name = 1;
+    double price = 2;
+    int32 stock = 3;
+}
